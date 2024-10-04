@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/navbar.html :: header( title = 'Peliculas')}"></head>
+<head th:replace="~{fragments/navbar.html :: header( title = 'Directores')}"></head>
 <body>
-<nav th:replace="~{fragments/navbar.html :: navbar( active = 'Peliculas')}"></nav>
+<nav th:replace="~{fragments/navbar.html :: navbar( active = 'Directores')}"></nav>
 <div class="row">
   <div class="col-2"></div>
   <div class="col-8">
-    <form action="/guardarPelicula" method="post" th:object="${pelicula}">
-      <input type="hidden" name="id" th:value="*{peliculaId}">
+    <form action="/guardarDirector" method="post" th:object="${director}">
+      <input type="hidden" name="id" th:value="*{directorId}">
       <input type="hidden" name="tipo" th:value="${tipo}">
       <div class="row">
-        <label for="titulo">Título: </label>
-        <input th:classappend="${#fields.hasErrors('titulo')?'is-invalid':''}" th:field="*{titulo}" type="text">
-        <div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+        <label for="nombre">Nombre: </label>
+        <input th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}" th:field="*{nombre}" type="text">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
       </div>
       <div class="row">
-        <label for="fechaEstreno">Fecha de estreno: </label>
-        <input th:classappend="${#fields.hasErrors('fechaEstreno')?'is-invalid':''}" th:field="*{fechaEstreno}" type="date">
-        <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaEstreno')}" th:errors="*{fechaEstreno}"></div>
+        <label for="telefono">Telefono: </label>
+        <input th:classappend="${#fields.hasErrors('telefono')?'is-invalid':''}" th:field="*{telefono}" type="tel">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
       </div>
       <div class="row">
-        <label for="duracionMinutos">Duración: </label>
-        <input th:classappend="${#fields.hasErrors('duracionMinutos')?'is-invalid':''}" th:field="*{duracionMinutos}" type="tel">
-        <div class="invalid-feedback" th:if="${#fields.hasErrors('duracionMinutos')}" th:errors="*{duracionMinutos}"></div>
+        <label for="nacionalidad">Nacionalidad: </label>
+        <input th:classappend="${#fields.hasErrors('nacionalidad')?'is-invalid':''}" th:field="*{nacionalidad}" type="tel">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('nacionalidad')}" th:errors="*{nacionalidad}"></div>
       </div>
       <div class="row">
         <div class="col-2">
           <button type="submit" class="btn btn-secondary" th:text="${tipo}"></button>
-          <a class="btn btn-danger" href="/peliculas/list">Cancelar</a>
+          <a class="btn btn-danger" href="/directores/list">Cancelar</a>
         </div>
       </div>
     </form>
