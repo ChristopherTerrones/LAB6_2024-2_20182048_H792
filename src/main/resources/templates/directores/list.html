@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Directores')}"></head>
+    <body>
+        <main>
+            <div class="container px-4 pb-5">
+                <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Directores')}"></nav>
+                <h1 class="pb-2 border-bottom">Lista de Directores</h1>
+                <a class="btn btn-primary mt-4 mb-4" href="/directores/registrarDirector">Nuevo Director</a>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Nacionalidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pelicula : ${listaDirectores}">
+                        <td th:text="${pelicula.nombre}"></td>
+                        <td th:text="${pelicula.telefono}"></td>
+                        <td th:text="${pelicula.nacionalidad}"></td>
+                        <td><a class="btn btn-primary"
+                               th:href="|/directores/editarDirector?id=${pelicula.directorId}|">Editar</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+    </body>
+</html>

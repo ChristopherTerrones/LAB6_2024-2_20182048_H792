@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Peliculas')}"></head>
+    <body>
+        <main>
+            <div class="container px-4 pb-5">
+                <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Peliculas')}"></nav>
+                <h1 class="pb-2 border-bottom">Lista de Peliculas</h1>
+                <a class="btn btn-primary mt-4 mb-4" href="/registrarPelicula">Nueva Pelicula</a>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Fecha de Estreno</th>
+                        <th>Duración</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pelicula : ${listaPeliculas}">
+                        <td th:text="${pelicula.titulo}"></td>
+                        <td th:text="${pelicula.fechaEstreno}"></td>
+                        <td th:text="${pelicula.duracionMinutos}"></td>
+                        <td><a class="btn btn-primary"
+                               th:href="|/peliculas/editarPelicula?id=${pelicula.peliculaId}|">Editar</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+    </body>
+</html>
